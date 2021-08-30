@@ -19,12 +19,12 @@ public class VertexSymbolsExtension extends Extension {
 
 	@Override
 	public String getVersion() {
-		return "2.1.0 (2021-08-21)";
+		return i18n("VertexSymbols.Version");
 	}
 	
 	@Override
 	public String getName() {
-		return "VertexSymbol - © 2005 Geoffrey G Roy. Modified version by Giuseppe Aruta 2020";
+		return "Vertex-Symbols - ©2005 Geoffrey G Roy, 2020 Giuseppe Aruta, 2021 OJ2 Team";
 	}
 
 	/**

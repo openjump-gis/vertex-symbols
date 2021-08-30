@@ -11,6 +11,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- workaround, we need to use em here, so they are avail later during filtering -->
+    <version.string>${git.branch}-${git.build.time}-${git.commit.id.abbrev}</version.string>
   </properties>
 
   <repositories>
@@ -55,7 +57,7 @@
             <goals>
               <goal>revision</goal>
             </goals>
-            <phase>process-resources</phase>
+            <phase>validate</phase>
           </execution>
         </executions>
         <configuration>

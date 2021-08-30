@@ -30,7 +30,44 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>com/cadplan/vertex_symbols/language/</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>4.0.4</version>
+        <?m2e execute onConfiguration,onIncremental?>
+        <executions>
+          <!-- retrieve git revision information from local repo -->
+          <execution>
+            <id>fetch git properties of current branch</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>process-resources</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <verbose>true</verbose>
+          <includeOnlyProperties>
+            <includeOnlyProperty>^git.branch$</includeOnlyProperty>
+            <includeOnlyProperty>^git.build.(time|version|(number(|.unique)))$</includeOnlyProperty>
+            <includeOnlyProperty>^git.commit.(id.(abbrev|full)|message.short)$</includeOnlyProperty>
+            <includeOnlyProperty>^git.dirty$</includeOnlyProperty>
+          </includeOnlyProperties>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>net.nicoulaj.maven.plugins</groupId>
         <artifactId>checksum-maven-plugin</artifactId>

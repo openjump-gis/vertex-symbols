@@ -46,6 +46,39 @@
     </resources>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <!-- exclude the VertexImages/ which is going to be packaged via assembly distro-zip -->
+          <excludes>
+            <exclude>VertexImages/</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+        </configuration>
+        <executions>
+          <execution>
+            <id>distro zip</id>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>distro-zip.xml</descriptor>
+              </descriptors>
+              <attach>false</attach>
+            </configuration>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
         <version>4.0.4</version>
@@ -85,7 +118,7 @@
                 <fileSet>
                   <directory>${project.build.directory}</directory>
                   <includes>
-                    <include>${project.build.finalName}.jar</include>
+                    <include>${project.build.finalName}.zip</include>
                   </includes>
                 </fileSet>
               </fileSets>

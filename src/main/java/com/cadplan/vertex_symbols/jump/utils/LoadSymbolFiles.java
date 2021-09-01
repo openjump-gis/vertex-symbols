@@ -18,6 +18,7 @@ import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
 import com.cadplan.vertex_symbols.fileio.TextFile;
+import com.cadplan.vertex_symbols.jump.VertexSymbolsExtension;
 import com.cadplan.vertex_symbols.jump.ui.SVGRasterizer;
 import org.apache.batik.transcoder.TranscoderException;
 
@@ -44,7 +45,7 @@ public class LoadSymbolFiles extends Component implements FilenameFilter, Runnab
 	int numImages = 0;
 	int numWKT = 0;
 	MediaTracker tracker;
-	String wd;
+
 	Thread thread;
 	boolean stopped = false;
 	PlugInContext context;
@@ -55,9 +56,7 @@ public class LoadSymbolFiles extends Component implements FilenameFilter, Runnab
 	}
 
 	private void loadImagesData() {
-		File pluginDir = this.context.getWorkbenchContext().getWorkbench().getPlugInManager().getPlugInDirectory();
 		this.tracker = new MediaTracker(this);
-		this.wd = pluginDir.getAbsolutePath();
 		this.loadNames();
 		VertexParams.imageNames = this.imageNames;
 		VertexParams.images = this.images;
@@ -76,16 +75,12 @@ public class LoadSymbolFiles extends Component implements FilenameFilter, Runnab
 	}
 
 	private void loadNames() {
-		File file = new File(this.wd + File.separator + "VertexImages");
-		if (!file.exists()) {
-			file.mkdirs();
+		File folder = VertexSymbolsExtension.getVertexImagesFolder(this.context.getWorkbenchContext());
+		if (folder == null || !folder.exists()) {
+			return;
 		}
 
-		if (this.debug) {
-			System.out.println("Location: " + file);
-		}
-
-		String[] fileNames = file.list(this);
+		String[] fileNames = folder.list(this);
 		Arrays.sort(fileNames);
 		if (fileNames != null && fileNames.length != 0) {
 			this.numberSymbols = fileNames.length;
@@ -113,7 +108,7 @@ public class LoadSymbolFiles extends Component implements FilenameFilter, Runnab
 					}
 
 					this.imageNames[j] = fileNames[i];
-					this.images[j] = this.loadImage(this.wd + File.separator + "VertexImages" + File.separator + fileNames[i]);
+					this.images[j] = this.loadImage(new File( folder, fileNames[i]).getPath());
 					++j;
 				}
 			}
@@ -123,11 +118,11 @@ public class LoadSymbolFiles extends Component implements FilenameFilter, Runnab
 			for(i = 0; i < fileNames.length; ++i) {
 				if (fileNames[i].toLowerCase().endsWith(".wkt")) {
 					if (this.debug) {
-						System.out.println("Loading image: " + fileNames[i]);
+						System.out.println("Loading WKT: " + fileNames[i]);
 					}
 
 					this.wktNames[j] = fileNames[i];
-					this.wktShapes[j] = this.loadWKT(this.wd + File.separator + "VertexImages" + File.separator + fileNames[i]);
+					this.wktShapes[j] = this.loadWKT(new File( folder, fileNames[i]).getPath());
 					++j;
 				}
 			}

@@ -11,6 +11,7 @@ import com.cadplan.vertex_symbols.vertices.renderer.style.PolygonVertexStyle;
 import com.cadplan.vertex_symbols.vertices.renderer.style.StarVertexStyle;
 import com.cadplan.vertex_symbols.vertices.renderer.style.WKTVertexStyle;
 import com.vividsolutions.jump.workbench.JUMPWorkbench;
+import com.vividsolutions.jump.workbench.Logger;
 import com.vividsolutions.jump.workbench.model.Layer;
 import com.vividsolutions.jump.workbench.ui.LayerViewPanel;
 import com.vividsolutions.jump.workbench.ui.renderer.style.BasicStyle;
@@ -163,7 +164,7 @@ public class VertexStyler {
 						}
 					}
 				} catch (NullPointerException ex) {
-					StyleUtils.Logger(this.getClass(), ex);
+					Logger.error(ex);
 				}
 			} else if (vertexStyle instanceof WKTVertexStyle) {
 				VertexParams.size = vertexStyle.getSize();
@@ -192,7 +193,7 @@ public class VertexStyler {
 
 					System.out.println("Selecting WKT:" + VertexParams.selectedWKT);
 				} catch (NullPointerException ex) {
-					StyleUtils.Logger(this.getClass(), ex);
+					Logger.error(ex);
 				}
 			}
 		}
@@ -205,7 +206,7 @@ public class VertexStyler {
 				}
 			}
 		} catch (NullPointerException ex) {
-			StyleUtils.Logger(this.getClass(), ex);
+			Logger.error(ex);
 		}
 
 		try {
@@ -215,7 +216,7 @@ public class VertexStyler {
 				}
 			}
 		} catch (NullPointerException ex) {
-			StyleUtils.Logger(this.getClass(), ex);
+			Logger.error(ex);
 		}
 
 		if (vertexStyle instanceof ExternalSymbolsType) {

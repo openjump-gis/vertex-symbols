@@ -584,25 +584,4 @@ public class StyleUtils {
 			JComponent label, JComponent component) {
 		addRowInGBL(parent, row, startCol, label, component, 0.0, true);
 	}
-
-
-	/**
-	 * Test Logger
-	 * 
-	 * @param plugin
-	 * @param e
-	 */
-
-	public static void Logger(Class<?> plugin, Exception e) {
-		JUMPWorkbench
-		.getInstance()
-		.getFrame()
-		.warnUser(
-				plugin.getSimpleName() + " Exception: " + e.toString());
-		Logger.error(plugin.getName() + " Exception: ", e);
-	}
-
-
-
-
 }

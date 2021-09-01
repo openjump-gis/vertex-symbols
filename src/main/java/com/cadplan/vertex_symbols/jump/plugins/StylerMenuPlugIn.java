@@ -46,9 +46,7 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
     loadSymbols.start();
     VertexParams.context = context.getWorkbenchContext();
 
-
     context.getWorkbenchContext().getWorkbench().getFrame().getToolBar().add(toolbarButton);
-
 
     EnableCheckFactory enableCheckFactory = context.getCheckFactory();
     MultiEnableCheck multiEnableCheck = new MultiEnableCheck();

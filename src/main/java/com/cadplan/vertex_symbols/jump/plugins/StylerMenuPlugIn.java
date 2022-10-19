@@ -28,9 +28,8 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
   private PlugInContext context;
   public static JMenuItem mi;
 
-  //private TaskMonitorManager taskMonitorManager;
   final VertexSymbolsPlugIn vertexSymbolsPlugIn = new VertexSymbolsPlugIn();
-  final VertexNotePlugin vertexnotePlugIn = new VertexNotePlugin();
+  final VertexNotePlugin vertexNotePlugIn = new VertexNotePlugin();
   ImageIcon ICON1 = IconLoader.icon("vsicon.gif");
   ImageIcon ICON2 = IconLoader.icon("noteicon.gif");
 
@@ -69,8 +68,8 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
     //context.getFeatureInstaller().addPopupMenuPlugin(LayerViewPanel.popupMenu(), vertexnotePlugIn,
     //		vertexnotePlugIn.getName(), false,ICON2, scheck);
    context.getFeatureInstaller().addPopupMenuPlugin(context.getLayerViewPanel().popupMenu()
-    		 , vertexnotePlugIn,
-     		vertexnotePlugIn.getName(), false,ICON2, multiEnableCheck);
+    		 , vertexNotePlugIn,
+       vertexNotePlugIn.getName(), false,ICON2, multiEnableCheck);
 
   }
 
@@ -89,10 +88,10 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
     popup.add(mi);
 
 
-    mi = new JMenuItem(vertexnotePlugIn.getName(),
+    mi = new JMenuItem(vertexNotePlugIn.getName(),
          GUIUtil.toSmallIcon(ICON2, 20));
-    mi.setToolTipText(vertexnotePlugIn.getName());
-    final ActionListener listener2 = AbstractPlugIn.toActionListener(vertexnotePlugIn,
+    mi.setToolTipText(vertexNotePlugIn.getName());
+    final ActionListener listener2 = AbstractPlugIn.toActionListener(vertexNotePlugIn,
          context.getWorkbenchContext(), new TaskMonitorManager());
     mi.addActionListener(listener2);
     popup.add(mi);

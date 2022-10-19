@@ -26,10 +26,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.cadplan.vertex_symbols.icon.IconLoader;
-import com.vividsolutions.jump.I18N;
 import org.saig.core.gui.swing.sldeditor.util.FormUtils;
 
-import com.cadplan.vertex_symbols.jump.VertexSymbolsExtension;
 import com.cadplan.vertex_symbols.jump.plugins.panel.ColorPanel;
 import com.cadplan.vertex_symbols.jump.plugins.panel.TextLabelPanel;
 import com.cadplan.vertex_symbols.jump.plugins.panel.TransparPanel;

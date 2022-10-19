@@ -24,7 +24,6 @@ import javax.swing.event.ChangeListener;
 
 import org.saig.core.gui.swing.sldeditor.util.FormUtils;
 
-import com.cadplan.vertex_symbols.jump.VertexSymbolsExtension;
 import com.cadplan.vertex_symbols.jump.plugins.panel.ColorPanel;
 import com.cadplan.vertex_symbols.jump.plugins.panel.VertexSymbologyPanel;
 import com.cadplan.vertex_symbols.jump.utils.VertexParams;
@@ -41,8 +40,6 @@ public class VertexSymbolsClassificationDialog extends JDialog implements Action
 	private final ExternalSymbolsImplType style;
 	OKCancelApplyPanel okCancelApplyPanel = new OKCancelApplyPanel();
 	Layer layer;
-	//Feature selectedFeature;
-	//FeatureDataset dataset;
 	//boolean allowEdit = true;
 	VertexSymbologyPanel symbologyPanel;
 	String symbolName = "";

@@ -4,7 +4,6 @@ import javax.swing.ImageIcon;
 
 import com.cadplan.vertex_symbols.icon.IconLoader;
 import com.cadplan.vertex_symbols.jump.VertexSymbolsExtension;
-import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
 import com.vividsolutions.jump.workbench.plugin.EnableCheck;
 import com.vividsolutions.jump.workbench.plugin.EnableCheckFactory;

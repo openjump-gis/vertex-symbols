@@ -32,7 +32,7 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
   final VertexSymbolsPlugIn vertexSymbolsPlugIn = new VertexSymbolsPlugIn();
   final VertexNotePlugin vertexnotePlugIn = new VertexNotePlugin();
   ImageIcon ICON1 = IconLoader.icon("vsicon.gif");
-  //ImageIcon ICON2 = IconLoader.icon("noteicon.gif");
+  ImageIcon ICON2 = IconLoader.icon("noteicon.gif");
 
   @Override
   public void initialize(final PlugInContext context) throws Exception {
@@ -68,7 +68,9 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
     //		vertexnotePlugIn.getName(), false, IconLoader.icon("noteicon.gif"), mcheck);
     //context.getFeatureInstaller().addPopupMenuPlugin(LayerViewPanel.popupMenu(), vertexnotePlugIn,
     //		vertexnotePlugIn.getName(), false,ICON2, scheck);
-
+   context.getFeatureInstaller().addPopupMenuPlugin(context.getLayerViewPanel().popupMenu()
+    		 , vertexnotePlugIn,
+     		vertexnotePlugIn.getName(), false,ICON2, multiEnableCheck);
 
   }
 
@@ -87,13 +89,13 @@ public class StylerMenuPlugIn extends AbstractPlugIn {
     popup.add(mi);
 
 
-    //mi = new JMenuItem(vertexnotePlugIn.getName(),
-    //    GUIUtil.toSmallIcon(ICON2, 20));
-    //mi.setToolTipText(vertexnotePlugIn.getName());
-    //final ActionListener listener2 = AbstractPlugIn.toActionListener(vertexnotePlugIn,
-    //    context.getWorkbenchContext(), new TaskMonitorManager());
-    //mi.addActionListener(listener2);
-    //popup.add(mi);
+    mi = new JMenuItem(vertexnotePlugIn.getName(),
+         GUIUtil.toSmallIcon(ICON2, 20));
+    mi.setToolTipText(vertexnotePlugIn.getName());
+    final ActionListener listener2 = AbstractPlugIn.toActionListener(vertexnotePlugIn,
+         context.getWorkbenchContext(), new TaskMonitorManager());
+    mi.addActionListener(listener2);
+    popup.add(mi);
     // the Button for the ToolBar
 
     return popup;

@@ -42,13 +42,13 @@ public class VertexSymbolsPlugIn extends AbstractPlugIn {
 
 	@Override
 	public boolean execute(PlugInContext context) {
-		Layer layer ;
+		//Layer layer ;
 		if (context.getSelectedLayers().length ==0) {
 			JOptionPane.showMessageDialog(null,
 					VertexSymbolsExtension.i18n("VertexNote.Dialog.Message2"), "Warning...", 2);
 			return false;
 		}
-		layer = context.getSelectedLayer(0); 
+		final Layer layer = context.getSelectedLayer(0);
 
 		//Read previous style from layer
 		VertexStyler symbols = new VertexStyler();

@@ -22,12 +22,12 @@ public class VertexSymbolsPlugIn extends AbstractPlugIn {
 
 	@Override
 	public void initialize(PlugInContext context) throws Exception {
-		EnableCheckFactory enableCheckFactory = context.getCheckFactory();
-		MultiEnableCheck multiEnableCheck = new MultiEnableCheck();
-		multiEnableCheck.add(enableCheckFactory.createAtLeastNLayersMustExistCheck(1));
-		multiEnableCheck.add(enableCheckFactory.createAtLeastNLayersMustBeSelectedCheck(1));
-		String str = MenuNames.PLUGINS;
-		context.getFeatureInstaller().addMainMenuPlugin(this, new String[]{str, MenuNames.STYLE}, this.getName(), false, ICON, multiEnableCheck);
+		context.getFeatureInstaller().addMainMenuPlugin(this, 
+				new String[]{MenuNames.PLUGINS, MenuNames.STYLE}, 
+				this.getName(), 
+				false, 
+				ICON, 
+				createEnableCheck(context.getWorkbenchContext()));
 		//load symbol files (wkt and images) from OJ/lib/ext/VertexImages folsed
 
 		LoadSymbolFiles loadSymbols = new LoadSymbolFiles(context);
@@ -35,6 +35,17 @@ public class VertexSymbolsPlugIn extends AbstractPlugIn {
 		VertexParams.context = context.getWorkbenchContext();
 	}
 
+	public static MultiEnableCheck createEnableCheck(
+	            WorkbenchContext workbenchContext) {
+		 EnableCheckFactory checkFactory = EnableCheckFactory.getInstance(workbenchContext);
+		 MultiEnableCheck multiEnableCheck = new MultiEnableCheck();
+		 multiEnableCheck.add(checkFactory.createWindowWithLayerViewPanelMustBeActiveCheck())
+		 .add(checkFactory.createAtLeastNLayerablesOfTypeMustExistCheck(1, Layer.class))
+		 .add(checkFactory.createAtLeastNLayersMustBeSelectedCheck(1));
+		 return multiEnableCheck;
+	 }
+	
+	
 	@Override
 	public String getName() {
 		return VertexSymbolsExtension.i18n("VertexSymbols.MenuItem");

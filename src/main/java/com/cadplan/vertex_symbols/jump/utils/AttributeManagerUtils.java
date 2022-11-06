@@ -115,7 +115,7 @@ public class AttributeManagerUtils {
 		{
 			newFeature.setAttribute(i, oldAttributes[i]);
 		}
-		newFeature.setAttribute(oldAttributes.length,0);
+		newFeature.setAttribute(oldAttributes.length,null);
 		return newFeature;
 	}
 

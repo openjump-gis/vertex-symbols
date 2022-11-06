@@ -295,7 +295,10 @@ public class TextLabelPanel extends JPanel implements PropertyPanel {
 
 			for(int i = 0; i < featureSchema.getAttributeCount(); ++i) {
 				AttributeType type = featureSchema.getAttributeType(i);
-				if (type == AttributeType.DOUBLE || type == AttributeType.INTEGER || type == AttributeType.STRING || type == AttributeType.DATE || type == AttributeType.GEOMETRY) {
+				if (type == AttributeType.DOUBLE || type == AttributeType.INTEGER ||
+						type == AttributeType.LONG || type == AttributeType.BOOLEAN ||
+						type == AttributeType.STRING || type == AttributeType.DATE ||
+						type == AttributeType.GEOMETRY) {
 					String name = featureSchema.getAttributeName(i);
 					this.attributeCombo.addItem(name);
 				}

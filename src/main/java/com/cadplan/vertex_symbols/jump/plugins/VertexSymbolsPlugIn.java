@@ -8,6 +8,7 @@ import com.cadplan.vertex_symbols.jump.utils.VertexStyler;
 import com.cadplan.vertex_symbols.jump.VertexSymbolsExtension;
 import com.cadplan.vertex_symbols.jump.utils.LoadSymbolFiles;
 import com.cadplan.vertex_symbols.jump.utils.VertexParams;
+import com.vividsolutions.jump.workbench.WorkbenchContext;
 import com.vividsolutions.jump.workbench.model.Layer;
 import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
 import com.vividsolutions.jump.workbench.plugin.EnableCheckFactory;
